@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block css %}
+<link rel="stylesheet" href="{{asset("assets/css/registration.css")}}">
+{% endblock %}
+{% block title %}Créer un compte{% endblock %}
+
+{% block noNav %}{% endblock %}
+{% block content %} 
+<br><br><br>
+<div class="logo">
+    <a href="{{path('app_home')}}">ECOMMERCE</a> 
+</div>
+<div class="form">
+<h1>Inscription</h1>
+{% if notif %}
+    <div class="alert">{{notif}}</div>
+    <hr>
+{% endif %}
+{{form_start(form)}}
+{{form_rest(form)}}
+<div class="end">
+    <input type="submit" class='btn-submit'>
+    <a href="{{path("app_login")}}">Connexion</a>
+</div>
+{{form_end(form)}}
+</div>
+{% endblock %}

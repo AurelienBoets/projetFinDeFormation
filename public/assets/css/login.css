@@ -1,0 +1,99 @@
+body {
+  font-size: 1.25rem;
+}
+.logo {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -10%);
+}
+.logo a {
+  color: unset;
+  font-size: 1.75rem;
+  font-weight: 700;
+}
+.logo a:hover {
+  color: unset;
+  text-decoration: none;
+}
+
+form {
+  display: grid;
+  position: absolute;
+  height: 50%;
+  width: 40%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(6, 1fr);
+  border: solid 1px #ced4da;
+  padding: 15px;
+}
+form label {
+  color: #5a5a5a;
+}
+.btn-submit {
+  display: block;
+  width: 100%;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 1.25rem;
+  background-color: rgb(101, 255, 101);
+}
+h1 {
+  text-align: center;
+}
+form > div > input {
+  width: 100%;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid #ced4da;
+  font-size: 1rem;
+}
+@media (max-width: 774px) {
+  h1 {
+    font-size: 1.95rem;
+  }
+}
+@media (max-width: 604px) {
+  h1 {
+    font-size: 1.75rem;
+  }
+}
+@media (max-width: 542px) {
+  h1 {
+    font-size: 1.55rem;
+  }
+}
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.25rem;
+  }
+  body,
+  .btn-submit {
+    font-size: 1rem;
+  }
+}
+@media (max-width: 542px) {
+  form {
+    left: 0;
+    top: 10%;
+    transform: translate(0, 0);
+    width: 100vw;
+    height: 70%;
+  }
+}
+a {
+  font-size: 1rem;
+  color: rgb(106, 106, 255);
+}
+a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+a:first-of-type {
+  margin-top: 15px;
+}
+form a {
+  text-align: center;
+}

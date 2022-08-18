@@ -1,0 +1,9 @@
+<div class="card">
+	<a href="{{path("app_product",{slug:products.slug})}}" class='card-img'>
+		<img src="/assets/images/{{ products.illustration }}" alt="{{ products.name }}" class='product-image'/>
+	</a>
+	<div class="product-title">
+		{{ products.name }}
+	</div>
+	<div class="product-price">{{ (products.price /100)|number_format(2,",",".") }} €</div> 
+</div>

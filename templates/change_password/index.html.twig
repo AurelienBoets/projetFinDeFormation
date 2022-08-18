@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mon mot de passe{% endblock %}
+{% block css %} <link rel="stylesheet" href="{{asset('assets/css/changePassword.css')}}"> {% endblock %}
+{% block search %}{{form(form)}}{% endblock %}
+{% block content %}
+<div class="change">
+<h1>Modifier mon mot de passe</h1>
+<hr>
+{% if notif %}
+<div class="alert alert-danger">{{notif}}</div>
+{% endif %}
+    {{form(change)}}
+</div>
+{% endblock %}
+

@@ -1,0 +1,25 @@
+.order {
+  margin-top: 3rem;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.margint {
+  margin-top: 2rem;
+}
+.flex {
+  display: flex;
+}
+.order img {
+  height: 80px;
+  width: auto;
+}
+.recapImg {
+  width: 50%;
+}
+.recapTitle {
+  width: 25%;
+}
+.recapPrice {
+  width: 25%;
+}

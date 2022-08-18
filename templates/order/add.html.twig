@@ -1,0 +1,57 @@
+{% extends "base.html.twig" %}
+{% block css %}<link rel="stylesheet" href="{{asset('assets/css/recap.css')}}">{% endblock %}
+{% block title %}
+    Paiement
+{% endblock %}
+{% block search %}
+    {{form(form)}}
+{% endblock %}
+
+{% block content %}
+<div class="order">
+    <h2>Récapitulatif</h2>
+    <p>Vérifiez vos informations avant de payer</p>
+    <hr>
+    <div>
+        <div>
+            <strong>Adresse de livraison</strong>
+            <div>
+                {{delivery|raw}}
+            </div>
+            <hr>
+            <strong>Transporteur</strong>
+            <div>
+                {{carrier.name}}<br>
+                {{carrier.description}}
+            </div>
+        </div>
+        <div>
+            <b>Récapitulatif</b>
+            <div>
+                {% set total = null %}
+                {% for key,product in cart %}
+                     <div class='{% if key > 0 %} margint {% endif %} flex'>
+                        <div class='recapImg'>
+                            <img src="/assets/images/{{ product.product.illustration }}" alt="{{product.product.name}}" class="img-75"><br>
+                        </div>
+                        <div class="recapTitle">
+                            {{product.product.name}} <br>
+                            <small>x{{product.quantity}}</small>
+                        </div>
+                        <div class="recapPrice">
+                            {{((product.product.price*product.quantity)/100)|number_format(2,",",".")}} €
+                        </div>
+                    </div>
+                    {% set total = total + (product.product.price * product.quantity) %}
+                {% endfor %}
+            </div>
+            <hr>
+            <strong>Sous-total :</strong>{{(total / 100)|number_format(2,",",".")}}€ <br>
+            <strong>Livraison :</strong>{{carrier.price|number_format(2,",",".")}} €  
+            <hr>
+            <strong>Total :</strong>{{(total / 100 + carrier.price)|number_format(2,",",".")}} €
+            <a href="{{ path('stripe_create_session',{'reference':reference})}}" class='btn'>Payer {{ ((total / 100) + carrier.price) | number_format(2, ',', '.') }}</a>  
+        </div>
+    </div>
+</div>
+{% endblock %}

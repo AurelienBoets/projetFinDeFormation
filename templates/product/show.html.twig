@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block search %}
+	{{form(form)}}
+{% endblock %}
+{% block title %}
+{{oneProduct.name}}
+{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-md-5">
+			<img src="/assets/images/{{ oneProduct.illustration }}" alt="{{oneProduct.name}}">
+		</div>
+		<div class="col-md-7">
+			<h3>{{oneProduct.name}}</h3>
+			<span class="product-page-price">{{ (oneProduct.price /100)|number_format(2,",",".") }} €</span>
+			<hr>
+			<p>{{oneProduct.description}}</p>
+			<hr>
+			<a href="{{path('app_cart_add', {'id':oneProduct.id})}}" class="btn">Ajouter au panier</a>
+		</div>
+	</div>
+
+{% endblock %}

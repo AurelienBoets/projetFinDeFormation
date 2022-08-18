@@ -1,0 +1,15 @@
+{% extends "base.html.twig" %}
+{% block title %}
+    Ajouter une addresse
+{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{{asset('assets/css/addAddress.css')}}">
+{% endblock %}
+{% block search %}
+    {{form(form)}}
+{% endblock %}
+{% block content %}    
+    <div class="addAddress">
+        {{form(add)}}
+    </div>
+{% endblock %}

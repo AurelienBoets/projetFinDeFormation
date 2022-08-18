@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma commande{% endblock %}
+
+{% block css %}<link rel="stylesheet" href="{{asset('assets/css/order.css')}}">{% endblock %}
+{% block script %} <script src="{{asset('assets/js/order.js')}}" defer></script> {% endblock %}
+
+{% block search %}
+    {{form(form)}}
+{% endblock %}
+
+{% block content %}
+<a href="{{path('app_address_add')}}" class='btn btn-right'>Ajouter une adresse</a>
+<div class="order">
+    <h2>Commande</h2>
+    <p>Choississez vos préférences avant de passer votre commande</p>
+    <hr>
+    <div class='flex'>
+        <div class='half'>
+            {% set formHtml %}
+            {{form_start(order,{action:path('app_order_recap')})}}
+                {{form_label(order.address,"Choississez une addresse de livraison")}}
+            {{form_end(order)}}
+            {% endset %}
+            {{formHtml|replace({'[br]' : '<br>'})|raw}}
+        </div>
+        <div class='half'>
+            <b>Récapitulatif</b>
+            <div class='order-summary'>
+                {% for key,product in cart %}
+                    <div class='{% if key > 0 %} margint {% endif %} orderShow'>
+                        <div class='orderImg'>
+                            <img src="/assets/images/{{ product.product.illustration }}" alt="{{product.product.name}}" class="img-75"><br>
+                        </div>
+                        <div class='orderTitle'>
+                            {{product.product.name}} <br>
+                        </div>
+                        <div class='orderQuantity'>
+                            x{{product.quantity}}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+{% block title %}Mon compte{% endblock %} 
+{% block search %}
+    {{form(form)}}
+{% endblock %}
+{% block content %}
+<div class="account">
+<h1>Mon compte</h1>
+Bienvenue {{ app.user.firstname }} dans votre espace client. <br />C'est dans
+cet espace que vous allez gérer vos informations personnelles.
+<hr />
+{% if is_granted('ROLE_ADMIN') %}
+-<a href="{{path('admin')}}">Accéder au backoffice</a><br>
+{% endif %}
+-<a href="{{path('app_change_password')}}">Modifier mon mot de passe</a><br />
+-<a href="{{path('app_address')}}">Gérer mes adresses</a><br>
+-<a href="{{path('app_account_order')}}">Mes commandes</a>
+</div>
+{% endblock %}

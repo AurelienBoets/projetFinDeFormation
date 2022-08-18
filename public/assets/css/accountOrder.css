@@ -1,0 +1,18 @@
+.myOrder {
+  margin-top: 3rem;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.myOrder a {
+  font-size: 1rem;
+  color: rgb(106, 106, 255);
+}
+.myOrder a:hover {
+  color: #0056b3;
+  text-decoration: underline;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}

@@ -1,0 +1,62 @@
+.order {
+  margin-top: 3rem;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+h2 {
+  font-size: 1.5rem;
+}
+.btn-right {
+  float: right;
+  margin-top: 10px;
+  margin-right: 8px;
+}
+p {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.half {
+  width: 48%;
+}
+.margint {
+  margin-top: 1rem;
+}
+.img-75 {
+  height: 75px;
+  width: unset;
+}
+.order-summary {
+  margin-top: 5px;
+}
+.orderShow {
+  display: flex;
+}
+.orderImg {
+  width: 45%;
+}
+.orderTitle {
+  max-width: 55%;
+  align-self: center;
+}
+.orderQuantity {
+  width: auto;
+  align-self: center;
+  margin-left: 10px;
+}
+.btn-validate {
+  margin-top: 5px;
+}
+@media (max-width: 680px) {
+  .flex {
+    display: block;
+  }
+  .half {
+    width: 100%;
+  }
+}

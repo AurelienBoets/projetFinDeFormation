@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Controller\Admin;
+
+use App\Entity\Product;
+use Doctrine\ORM\EntityManagerInterface;
+use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\BooleanField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
+class ProductCrudController extends AbstractCrudController
+{
+    public static function getEntityFqcn(): string
+    {
+        return Product::class;
+    }
+
+    public function configureFields(string $pageName): iterable
+    {
+        return [
+            TextField::new("name"),
+            SlugField::new("slug")->setTargetFieldName("name"),
+            ImageField::new("illustration")->setBasePath('assets/images/')
+            ->setUploadDir('public/assets/images/')
+            ->setUploadedFileNamePattern("[randomhash].(extension)")
+            ->setRequired(false),
+            TextareaField::new("description"),
+            MoneyField::new("price")->setCurrency('EUR'),
+            AssociationField::new("category"),
+            DateField::new("created_at")->hideOnForm()
+        ];
+    }
+
+    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    {
+        if (!$entityInstance instanceof Product) {
+            return;
+        }
+
+        $entityInstance->setCreatedAt(new \DateTimeImmutable());
+
+        parent::persistEntity($entityManager, $entityInstance);
+    }
+}
